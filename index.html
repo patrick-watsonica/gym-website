@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="normalize.css" />
+		<link rel="stylesheet" href="style.css" />
+		<title>Jim's Gym</title>
+		<script src="app.js" defer></script>
+	</head>
+	<body>
+		<div class="home">
+			<a class="skip-to-content" href="#main">skip to content</a>
+			<header class="section-wrap primary-header">
+				<div class="primary-header-layout">
+						<img
+							class="logo"
+							src="./images/logo-gym-racoon.jpg"
+							alt="gym logo"
+						/>
+					<button
+						class="mobile-nav-toggle"
+						aria-controls="primary-navigation"
+						aria-expanded="false"
+					>
+						<span class="sr-only">Menu</span>
+					</button>
+					<nav>
+						<ul
+							id="primary-navigation"
+							data-visible="false"
+							class="primary-navigation"
+						>
+							<li class="nav-item nav-item1">
+								<a
+									class="text-white letter-space-2 uppercase"
+									href="#first-link"
+									>home</a
+								>
+							</li>
+							<li class="nav-item nav-item2">
+								<a class="text-white letter-space-2 uppercase" href="#second-link"
+									>about</a
+								>
+							</li>
+							<li class="nav-item nav-item3">
+								<a class="text-white letter-space-2 uppercase" href="#third-link"
+									>service</a
+								>
+							</li>
+							<li class="nav-item nav-item4">
+								<a class="text-white letter-space-2 uppercase" href="#fourth-link"
+									>timings</a
+								>
+							</li>
+							<li class="nav-item5">
+								<a
+									class="contact-btn text-black letter-space-2 uppercase"
+									href="#"
+									>get in touch</a
+								>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</header>
+			<main id="main">
+				<section class="section1 section-wrap">
+					<div class="section1-layout top-9">
+						<h1 class="fs-8">Jim's Gym</h1>
+						<div class="flex sect1-sub">
+						<p class="fs-4 uppercase">get fit</p>
+						<p class="fs-4 uppercase">build muscle</p>
+						<p class="fs-4 uppercase">get slim</p>
+						</div>
+						<div class="top-6">
+							<a
+								class="membership-btn text-black letter-space-2 uppercase"
+								href="#"
+								>membership</a
+							>
+						</div>
+					</div>
+				</section>
+		</div>
+		</main>
+		<footer id="footer" class="section-wrap footer bg- text-white">
+			<div class="footer-layout top-6 bot-6">
+				<img class="footer-logo" src="./images/logo-gym-racoon.jpg" alt="gym logo">
+				<div class="socials">
+					<p class="fs-1">connect with us</p>
+					<div class="link-icons flex">
+						<a href="#"><img class="link-icon" src="./images/icon-facebook.svg" alt="facebook icon"></a>
+						<a href="#"><img class="link-icon" src="./images/icon-instagram.svg" alt="instagram icon"></a>
+						<a href="#"><img class="link-icon" src="./images/icon-pinterest.svg" alt="pintrest icon"></a>
+						<a href="#"><img class="link-icon" src="./images/icon-tiktok.svg" alt="tiktok icon"></a>
+					</div>
+				</div>
+				<div class="footer-links">
+					<p>gym locations</p>
+					<p>fitness classes</p>
+					<p>corporate membership</p>
+					<p>deals and offers</p>
+				</div>
+			</div>
+			
+		</footer>
+	</body>
+</html>
