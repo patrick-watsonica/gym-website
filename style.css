@@ -52,13 +52,13 @@ picture {
 
 /* SET UP THE BODY */
 body {
-	background-color: hsl(var(--clr-white));
+	background-color: hsl(var(--clr-black));
 	color: hsl(var(--clr-white));
 	font-family: var(--ff-sans-normal);
 	font-size: var(--fs-norm);
 	line-height: 1.5;
 
-	overflow-x: hidden;
+	/* overflow-y: hidden; */
 }
 
 /* MAKE IMAGES EASIER TO WORK WITH */
@@ -127,11 +127,17 @@ p,
 .fs-1 {
 	font-size: var(--fs-small);
 }
-.nav-item {
+.nav-link {
 	font-size: var(--fs-small);
 }
 
-@media (max-width: 35em), (max-height: 35em) {
+@media (min-width: 720px) and (max-width: 960px) {
+	.nav-link {
+		font-size: 0.75rem;
+	}
+}
+
+@media (max-width: 560px), (max-height: 560px) {
 	h1,
 	.fs-7 {
 		font-size: var(--fs-xxl-big);
@@ -150,7 +156,7 @@ p,
 	}
 }
 
-@media (max-width: 25em), (max-height: 25em) {
+@media (max-width: 400px), (max-height: 400px) {
 	h1,
 	.fs-7 {
 		font-size: var(--fs-x-big);
@@ -312,58 +318,38 @@ p,
 
 /* ------------------- */
 /* PRIMARY HEADER      */
-/* LAYOUT + SPACING    */
+/* AND NAVIGATION      */
 /* ------------------- */
 
 .primary-header-layout {
 	display: grid;
-	grid-template-columns: 20vw 100px 1fr;
+	grid-template-columns: auto 1fr;
 	grid-template-rows: 15vh;
-}
 
-@media (min-width: 45em) {
-	.primary-header-layout {
-		grid-template-columns: auto 1fr;
-	}
-
-	.primary-navigation {
-		display: grid;
-		grid-template-columns: 1fr repeat(4, auto) 1fr;
-	}
-
-	.nav-item1 {
-		grid-column: 2;
-	}
-}
-/* ////////////////////// */
-
-@media (max-width: 44.999em) {
-	.primary-navigation {
-		display: grid;
-		grid-template-columns: 1fr;
-		grid-template-rows: repeat(5, 5vh);
-	}
-}
-/* ////////////////////// */
-
-/* ------------------- */
-/* PRIMARY-HEADER      */
-/* ------------------- */
-
-.primary-header-layout {
 	align-items: center;
-}
-.logo {
-	max-height: 12vh;
-	width: auto;
 }
 
 .primary-navigation {
-	justify-content: center;
+	display: grid;
+	grid-template-columns: 1fr repeat(4, auto) 1fr min-content;
+
+	align-items: center;
 	list-style: none;
 	margin: 0;
 	padding: 0;
-	align-items: center;
+}
+
+.primary-navigation > .nav-item1 {
+	grid-column: 2;
+}
+
+.primary-navigation > .contact-btn-wrap {
+	grid-column: 7;
+}
+
+.logo {
+	max-height: 12vh;
+	object-fit: contain;
 }
 
 .primary-navigation a {
@@ -374,6 +360,7 @@ p,
 	border-bottom: 0.4vh solid hsl(var(--clr-white) / 0);
 	cursor: pointer;
 	padding: 1.4vh clamp(0.5rem, 2vw, 4.5rem) 1vh;
+	text-align: center;
 }
 
 .nav-item:hover,
@@ -383,11 +370,10 @@ p,
 
 .contact-btn {
 	background-color: hsl(var(--clr-accent));
-	border: 0.3vw solid hsl(var(--clr-light));
+	border: 0.3rem solid hsl(var(--clr-light));
 	border-radius: 2rem;
 	cursor: pointer;
-	font-size: var(--fs-small);
-	padding: 0.5rem 0.7rem;
+	padding: 0.3rem 0.5rem;
 	text-decoration: none;
 	white-space: nowrap;
 }
@@ -395,27 +381,37 @@ p,
 .contact-btn:hover,
 .contact-btn:focus {
 	background-color: hsl(var(--clr-light));
-	border: 0.3vw solid hsl(var(--clr-white));
+	border: 0.3rem solid hsl(var(--clr-white));
 	color: hsl(var(--clr-white));
 }
 
-@media (min-width: 45em) {
-	.nav-item5 {
-		justify-self: end;
-	}
+.contact-btn-wrap {
+	justify-self: end;
 }
-
-/* MOBILE/SMALL TABLET NAVIGATION //////////////////////////////////////////// */
 
 .mobile-nav-toggle {
 	display: none;
 }
+/* SMALLER SCREENS NAVIGATION //////////////////////////////////////////// */
 
-@media (max-width: 44.999em) {
+@media (max-width: 720px) {
 	.primary-navigation {
-		background-color: hsl(var(--clr-black) / 0.85);
+		grid-template-columns: 1fr;
+		grid-template-rows: repeat(5, 5vh);
+
+		background-color: hsl(var(--clr-black) / 0.9);
+		background: hsl(var(--black));
+		background-image: linear-gradient(
+				hsl(var(--clr-black) / 0.5),
+				hsl(var(--clr-black) / 0.85),
+				hsl(var(--clr-black) / 0.5)
+			),
+			url(./images/workout-girl.jpg);
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
 		gap: 6vh;
-		inset: 0 0 0 30%;
+		inset: 0 0 0 0%;
 		justify-content: start;
 		padding: 15vh 3rem;
 		position: fixed;
@@ -424,19 +420,31 @@ p,
 		z-index: 1000;
 	}
 
+	.primary-navigation > .nav-item1 {
+		grid-column: 1;
+	}
+
+	.primary-navigation > .contact-btn-wrap {
+		grid-column: 1;
+	}
+
 	.primary-navigation[data-visible='true'] {
 		transform: translateX(0);
 	}
 
+	.contact-btn-wrap {
+		justify-self: center;
+	}
 	/* MOBILE NAV TOGGLE ////////// */
 
 	.mobile-nav-toggle {
+		display: block;
+
 		background: transparent;
 		background-image: url(./images/icon-hamburger.svg);
 		background-position: center;
 		background-repeat: no-repeat;
 		border: 0;
-		display: block;
 		height: 1.5rem;
 		position: absolute;
 		right: 9vw;
@@ -473,6 +481,7 @@ p,
 
 .section1 {
 	grid-template-rows: minmax(85vh, auto);
+
 	place-items: center;
 	text-align: center;
 }
@@ -484,21 +493,20 @@ p,
 .section1-layout > a {
 	text-decoration: none;
 }
-.membership-btn {
+.cta-1-btn {
 	background-color: hsl(var(--clr-accent));
-	border: 0.3vw solid hsl(var(--clr-light));
-	border-radius: 2rem;
+	border: 0.3rem solid hsl(var(--clr-light));
+	border-radius: 3rem;
 	cursor: pointer;
-	font-size: var(--fs-small);
-	padding: 0.5rem 0.7rem;
+	padding: 0.5rem 1rem;
 	text-decoration: none;
 	white-space: nowrap;
 }
 
-.membership-btn:hover,
-.membership-btn:focus {
+.cta-1-btn:hover,
+.cta-1-btn:focus {
 	background-color: hsl(var(--clr-light));
-	border: 0.3vw solid hsl(var(--clr-white));
+	border: 0.3rem solid hsl(var(--clr-white));
 	color: hsl(var(--clr-white));
 }
 
@@ -507,12 +515,13 @@ p,
 .footer-layout {
 	display: grid;
 	grid-template-columns: auto 1fr auto;
+
 	align-items: center;
 }
 
 .footer-logo {
-	width: min(10vw, 100px);
 	margin-right: 5vw;
+	width: 100px;
 }
 
 .socials {
@@ -527,6 +536,16 @@ p,
 .link-icon {
 	cursor: pointer;
 	width: 30px;
+}
+
+.footer-links {
+	text-align: right;
+	line-height: 2;
+	list-style: none;
+}
+
+.footer-links a {
+	text-decoration: none;
 }
 
 /* /////////////////////////////////////////////////////////// */
@@ -544,25 +563,25 @@ p,
 			hsl(var(--clr-black) / 0.5)
 		),
 		url(./images/workout-girl.jpg);
-	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 .primary-header {
-	background: hsl(var(--clr-white) / 0.2);
+	background: hsl(var(--clr-black) / 0.4);
 }
 
 .footer {
 	background: hsl(var(--black));
 	background-image: linear-gradient(
 			hsl(var(--clr-black) / 0.6),
-			hsl(var(--clr-black) / 0.6)
+			hsl(var(--clr-black) / 0.9)
 		),
 		url(./images/gym-equipment.jpg);
-	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 /* ///////////////////////////////////////////////////////////////////////// */
